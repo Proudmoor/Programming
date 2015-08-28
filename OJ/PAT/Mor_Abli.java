@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.*;
+import java.util.*;
 
 class Student{
 	int id, Moral, Abi, sum;
@@ -25,6 +26,11 @@ class Student{
 	public int getSum(){
 		return this.Moral + this.Abi;
 	}
+
+	public String toString(){
+		System.out.print(id + " " + Moral + " " + Abi);
+		return "";
+	}
 }
 
 public class Mor_Abli{
@@ -34,22 +40,58 @@ public class Mor_Abli{
 		int Low    = input.nextInt();
 		int High   = input.nextInt();
 
-		System.out.println(Number);
 		Student[] st = new Student[Number];
-		for(Student s2: st){
-			System.out.println(s2);
-		}
+
 		for(int i = 0; i < Number; i++){
 			st[i] = new Student();
 			st[i].setID(input.nextInt());
 			st[i].setMoral(input.nextInt());
 			st[i].setAbi(input.nextInt());
 		}
-		//System.out.println(st[10].getID() + " " + st[10].getMoral() + " " + st[10].getAbi());
-
-		for(int i = 0; i < Number; i++){
-			System.out.println(st[i].getID() + " " + st[i].getMoral() + " " + st[i].getAbi());
+		List<Student> a1 = new ArrayList<>();
+		List<Student> a2 = new ArrayList<>();
+		List<Student> a3 = new ArrayList<>();
+		List<Student> a4 = new ArrayList<>();
+		int LowCount = 0;
+		for(Student s: st){
+			if(s.getMoral() <Low || s.getAbi() < Low){
+				LowCount++;
+			}else if(s.getMoral() >= High && s.getAbi() >= High){
+				a1.add(s);
+			}else if(s.getMoral() >=High && s.getAbi() < High){
+				a2.add(s);
+			}else if(s.getMoral() < High && s.getAbi() < High && s.getMoral() >= s.getAbi()){
+				a3.add(s);
+			}else{
+				a4.add(s);
+			}
 		}
-		// System.out.println(s1.getID() + " " + s1.getMoral() + " " + s1.getAbi());
+
+		Comparator<Student> cp = new Comparator<Student>(){
+            public int compare(Student a, Student b){
+                if(a.getSum() != b.getSum()){
+                    return b.getSum() - a.getSum();
+                } else if(a.getMoral() != b.getMoral()){
+                    return b.getMoral() - a. getMoral();
+                } else {
+                    return a.getID() - b.getID();
+                }
+            }
+        };
+        Collections.sort(a1, cp);
+        Collections.sort(a2, cp);
+        Collections.sort(a3, cp);
+        Collections.sort(a4, cp);
+        System.out.println(Number - LowCount);
+
+		for(Student s: a1){
+			System.out.println(s);
+		}
+		for(Student s: a2){
+			System.out.println(s);
+		}
+		for(Student s: a3){
+			System.out.println(s);
+		}
 	}
 }
