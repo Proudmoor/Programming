@@ -48,10 +48,10 @@ public class Mor_Abli{
 			st[i].setMoral(input.nextInt());
 			st[i].setAbi(input.nextInt());
 		}
-		List<Student> a1 = new ArrayList<>();
-		List<Student> a2 = new ArrayList<>();
-		List<Student> a3 = new ArrayList<>();
-		List<Student> a4 = new ArrayList<>();
+		List<Student> a1 = new LinkedList<>();
+		List<Student> a2 = new LinkedList<>();
+		List<Student> a3 = new LinkedList<>();
+		List<Student> a4 = new LinkedList<>();
 		int LowCount = 0;
 		for(Student s: st){
 			if(s.getMoral() <Low || s.getAbi() < Low){
@@ -93,5 +93,9 @@ public class Mor_Abli{
 		for(Student s: a3){
 			System.out.println(s);
 		}
+		for(Student s: a4){
+			System.out.println(s);
+		}
+
 	}
 }
