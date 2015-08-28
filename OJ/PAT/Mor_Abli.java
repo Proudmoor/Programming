@@ -39,19 +39,15 @@ public class Mor_Abli{
 		for(Student s2: st){
 			System.out.println(s2);
 		}
-		Student s = new Student();
-		s.setID(input.nextInt());
-		s.setMoral(input.nextInt());
-		s.setAbi(input.nextInt());
-		for(int i = 0; i < Number-1; i++){
+		for(int i = 0; i < Number; i++){
 			st[i] = new Student();
 			st[i].setID(input.nextInt());
 			st[i].setMoral(input.nextInt());
 			st[i].setAbi(input.nextInt());
 		}
-		System.out.println(st[10].getID() + " " + st[10].getMoral() + " " + st[10].getAbi());
+		//System.out.println(st[10].getID() + " " + st[10].getMoral() + " " + st[10].getAbi());
 
-		for(int i = 0; i < Number-1; i++){
+		for(int i = 0; i < Number; i++){
 			System.out.println(st[i].getID() + " " + st[i].getMoral() + " " + st[i].getAbi());
 		}
 		// System.out.println(s1.getID() + " " + s1.getMoral() + " " + s1.getAbi());
