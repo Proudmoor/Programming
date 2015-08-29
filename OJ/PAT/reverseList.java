@@ -13,6 +13,13 @@ class Node{
 }
 
 public class reverseList{
+	public static void reverse(ArrayList<Node> list, int begin, int end){
+		for(int i = 0; i<=(end - begin)/ 2; i++){
+			Node temp = list.get(begin + i);
+			list.set(begin+i, list.get(end - i));
+			list.set(end - i, temp);
+		}
+	}
 	public static void main(String[] args){
 		Scanner in = new Scanner(new BufferedInputStream(System.in));
 		String flag = in.next();
@@ -32,38 +39,43 @@ public class reverseList{
 		// for(Node ls : list){
 		// 	System.out.println(ls.Address);
 		// }
-		Node[] ordered = new Node[n];
-		int temp = 0;
+		// Node[] ordered = new Node[n];
+		ArrayList<Node> ordered = new ArrayList<Node>();
+		
 		while (!flag.equals("-1")){
 			
 			for(int i = 0; i < n; i++){
 				
 				if(flag.equals(list[i].Address)){
-					ordered[temp] = new Node();
-					ordered[temp].Address  = list[i].Address;
-					ordered[temp].data     = list[i].data;
-					ordered[temp].Next    =  list[i].Next;
+					Node temp = new Node();
+
+					temp.Address = list[i].Address;
+					temp.data    = list[i].data;
+					temp.Next    = list[i].Next;
+					ordered.add(temp);
 					flag = list[i].Next;
-					temp++;
 					break;
 				}
 			}
 		}
 
-		// for (Node node : ordered){
-		// 	System.out.println(node.Address +" "+ node.data + " " +node.Next);
-		// }
-		int time = 1;
-		while(time <=ListCount){
-			for(int i = 0; i < k; i++){
-				Node node = ordered[time * k - i-1];
+		if(k == 1){
+			for (Node node : ordered){
 				System.out.println(node.Address +" "+ node.data + " " +node.Next);
 			}
-			time++;
 		}
-		for(int i = 0; i < reminder; i++){
-			Node node = ordered[ListCount * k + i];
-			System.out.println(node.Address +" "+ node.data + " " +node.Next);
+
+		int times = ordered.size() / k;
+        for (int i = 0; i < times; ++i) {
+            int begin = i * k;
+            int end = i * k + k - 1;
+            reverse(ordered, begin, end);
+        }
+
+		for (Node node : ordered){
+				System.out.println(node.Address +" "+ node.data + " " +node.Next);
 		}
+
+		
 	}	
 }
