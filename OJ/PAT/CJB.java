@@ -21,13 +21,13 @@ public class CJB{
 				victory[1]++;
 			} else if((A.equals("J")&& B.equals("B")) || (A.equals("B")&& B.equals("C")) ||(A.equals("C")&& B.equals("J"))){
 				victory[0]++;
-				if(A.equals("C")) numA[0]++;
-				if(A.equals("B")) numA[1]++;
+				if(A.equals("B")) numA[0]++;
+				if(A.equals("C")) numA[1]++;
 				if(A.equals("J")) numA[2]++; 
 			}else{
 				victory[2]++;
-				if(B.equals("C")) numB[0]++;
-				if(B.equals("B")) numB[1]++;
+				if(B.equals("B")) numB[0]++;
+				if(B.equals("C")) numB[1]++;
 				if(B.equals("J")) numB[2]++; 
 			}
 
@@ -37,17 +37,18 @@ public class CJB{
 
 		System.out.println(victory[2] + " " + victory[1] + " " + victory[0]);
 
+		
 		if(numA[0]>= numA[1]&& numA[0] >= numA[2])
-			System.out.print("C");
-		else if (numA[1] > numA[0] && numA[1] >=numA[2])
 			System.out.print("B");
+		else if (numA[1] > numA[0] && numA[1] >=numA[2])
+			System.out.print("C");
 		else
 			System.out.print("J");
 
 		if(numB[0]>= numB[1]&& numB[0] >= numB[2])
-			System.out.print(" C");
-		else if (numB[1] > numB[0] && numB[1] >=numB[2])
 			System.out.print(" B");
+		else if (numB[1] > numB[0] && numB[1] >=numB[2])
+			System.out.print(" C");
 		else
 			System.out.print(" J");
 
